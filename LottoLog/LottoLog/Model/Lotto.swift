@@ -5,7 +5,7 @@
 //  Created by Jisoo HAM on 6/5/24.
 //
 
-import Foundation
+import UIKit
 
 struct Lotto: Decodable {
     /// 전체 당첨금
@@ -28,4 +28,47 @@ struct Lotto: Decodable {
     let drwNo: Int
     /// 추첨 날짜
     let drwNoDate: String
+}
+
+enum LottoColor: String, CaseIterable {
+    case orange
+    case blue
+    case red
+    case gray
+    case green
+    case etc
+    
+    var color: UIColor {
+        switch self{
+        case .orange:
+            return UIColor.underTen
+        case .blue:
+            return UIColor.underTwenty
+        case .red:
+            return UIColor.underThirty
+        case .gray:
+            return UIColor.underFourty
+        case .green:
+            return UIColor.underFourtyFive
+        case .etc:
+            return UIColor.clear
+        }
+    }
+    
+    static func changeColor(with number: Int) -> LottoColor {
+        switch number {
+        case 1...10:
+            return .orange
+        case 11...20:
+            return .blue
+        case 21...30:
+            return .red
+        case 31...40:
+            return .gray
+        case 41...45:
+            return .green
+        default:
+            return .etc
+        }
+    }
 }
