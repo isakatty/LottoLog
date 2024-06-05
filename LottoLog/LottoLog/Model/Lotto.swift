@@ -28,6 +28,13 @@ struct Lotto: Decodable {
     let drwNo: Int
     /// 추첨 날짜
     let drwNoDate: String
+    
+    var changedDate: String {
+        return drwNoDate + " 추첨"
+    }
+    var changedDrawNo: String {
+        return String(drwNo) + "회"
+    }
 }
 
 enum LottoColor: String, CaseIterable {

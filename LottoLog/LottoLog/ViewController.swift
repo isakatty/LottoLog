@@ -12,14 +12,6 @@ import SnapKit
 
 class ViewController: UIViewController {
     
-    let label1: UILabel = {
-        let lb = UILabel()
-        lb.textAlignment = .center
-        lb.numberOfLines = .zero
-        lb.backgroundColor = .brown
-        return lb
-    }()
-    
     let numberStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -43,6 +35,8 @@ class ViewController: UIViewController {
         return circle
     }()
     
+    let descriptionView = DescriptionView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networking()
@@ -52,7 +46,6 @@ class ViewController: UIViewController {
     }
     
     func networking() {
-        
         let url = privateKey.lottoURL + "1107"
         
         AF.request(url).responseDecodable(of: Lotto.self) { response in
@@ -79,6 +72,10 @@ class ViewController: UIViewController {
                 self.bonus.configureUI(
                     number: lotto.bnusNo
                 )
+                self.descriptionView.configureUI(
+                    date: lotto.changedDate,
+                    drawNumber: lotto.changedDrawNo
+                )
             case .failure(let error):
                 print(error)
             }
@@ -87,7 +84,8 @@ class ViewController: UIViewController {
     
     func configureHierarchy() {
         
-        view.addSubview(numberStackView)
+        [descriptionView, numberStackView]
+            .forEach { view.addSubview($0) }
         
         [drawNo1, drawNo2, drawNo3, drawNo4,
          drawNo5, drawNo6, plusView, bonus]
@@ -97,8 +95,16 @@ class ViewController: UIViewController {
     func configureLayout() {
         let safeArea = view.safeAreaLayoutGuide
         
+        descriptionView.snp.makeConstraints { make in
+            make.top.equalTo(safeArea).offset(100)
+            make.centerX.equalTo(safeArea)
+            make.leading.trailing.equalTo(safeArea).inset(15)
+            make.width.greaterThanOrEqualTo(80)
+        }
+        
         numberStackView.snp.makeConstraints { make in
-            make.center.equalTo(safeArea)
+            make.centerX.equalTo(safeArea)
+            make.top.equalTo(descriptionView.snp.bottom).offset(30)
             make.leading.trailing.equalTo(safeArea).inset(15)
             make.height.equalTo(40)
         }
