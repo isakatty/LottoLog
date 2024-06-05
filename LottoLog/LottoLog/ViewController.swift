@@ -31,20 +31,7 @@ class ViewController: UIViewController {
         stack.spacing = 7
         return stack
     }()
-    var drawNo1 = CircleView()
-    var drawNo2 = CircleView()
-    var drawNo3 = CircleView()
-    var drawNo4 = CircleView()
-    var drawNo5 = CircleView()
-    var drawNo6 = CircleView()
-    var bonus = CircleView()
-    var plusView: CircleView = {
-        let circle = CircleView()
-        circle.plusUI(plus: "+")
-        circle.drawLabel.textColor = .black
-        return circle
-    }()
-    
+    let lottoNumbersView = LottoNumbersView()
     let descriptionView = DescriptionView()
     
     // pickerview에서 선택할 요소인데, 값이 바뀔때 어떻게 가져올 수 있지 ?
@@ -65,27 +52,7 @@ class ViewController: UIViewController {
         AF.request(url).responseDecodable(of: Lotto.self) { response in
             switch response.result {
             case .success(let lotto):
-                self.drawNo1.configureUI(
-                    number: lotto.drwtNo1
-                )
-                self.drawNo2.configureUI(
-                    number: lotto.drwtNo2
-                )
-                self.drawNo3.configureUI(
-                    number: lotto.drwtNo3
-                )
-                self.drawNo4.configureUI(
-                    number: lotto.drwtNo4
-                )
-                self.drawNo5.configureUI(
-                    number: lotto.drwtNo5
-                )
-                self.drawNo6.configureUI(
-                    number: lotto.drwtNo6
-                )
-                self.bonus.configureUI(
-                    number: lotto.bnusNo
-                )
+                self.lottoNumbersView.configureUI(numbers: lotto.drawNumbers)
                 self.descriptionView.configureUI(
                     date: lotto.changedDate,
                     drawNumber: lotto.changedDrawNo
@@ -97,12 +64,8 @@ class ViewController: UIViewController {
     }
     func configureHierarchy() {
         
-        [chooseTextField, descriptionView, numberStackView]
+        [chooseTextField, descriptionView, lottoNumbersView]
             .forEach { view.addSubview($0) }
-        
-        [drawNo1, drawNo2, drawNo3, drawNo4,
-         drawNo5, drawNo6, plusView, bonus]
-            .forEach { numberStackView.addArrangedSubview($0) }
         
     }
     func configureLayout() {
@@ -121,7 +84,7 @@ class ViewController: UIViewController {
             make.width.greaterThanOrEqualTo(80)
         }
         
-        numberStackView.snp.makeConstraints { make in
+        lottoNumbersView.snp.makeConstraints { make in
             make.centerX.equalTo(safeArea)
             make.top.equalTo(descriptionView.snp.bottom).offset(30)
             make.leading.trailing.equalTo(safeArea).inset(15)

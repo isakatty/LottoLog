@@ -51,7 +51,6 @@ class CircleView: UIView {
         number: Int
     ) {
         backgroundColor = LottoColor.changeColor(with: number).color
-        
         drawLabel.text = String(number)
     }
     

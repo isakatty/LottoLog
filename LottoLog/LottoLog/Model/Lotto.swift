@@ -29,6 +29,10 @@ struct Lotto: Decodable {
     /// 추첨 날짜
     let drwNoDate: String
     
+    var drawNumbers: [Int] {
+        return [drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6, bnusNo]
+    }
+    
     var changedDate: String {
         return drwNoDate + " 추첨"
     }
