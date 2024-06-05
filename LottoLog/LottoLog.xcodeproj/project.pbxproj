@@ -13,6 +13,10 @@
 		C916B8F42C104D730050AEF5 /* LottoLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C916B8F22C104D730050AEF5 /* LottoLog.xcdatamodeld */; };
 		C916B8F62C104D740050AEF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C916B8F52C104D740050AEF5 /* Assets.xcassets */; };
 		C916B8F92C104D740050AEF5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C916B8F82C104D740050AEF5 /* Base */; };
+		C916B9012C104E3B0050AEF5 /* privateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C916B9002C104E3B0050AEF5 /* privateKey.swift */; };
+		C916B9042C1055F60050AEF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C916B9032C1055F60050AEF5 /* Alamofire */; };
+		C916B9072C1056030050AEF5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C916B9062C1056030050AEF5 /* SnapKit */; };
+		C916B90A2C1060430050AEF5 /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C916B9092C1060430050AEF5 /* Lotto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,8 @@
 		C916B8F52C104D740050AEF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C916B8F82C104D740050AEF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C916B8FA2C104D740050AEF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C916B9002C104E3B0050AEF5 /* privateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = privateKey.swift; sourceTree = "<group>"; };
+		C916B9092C1060430050AEF5 /* Lotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C916B9042C1055F60050AEF5 /* Alamofire in Frameworks */,
+				C916B9072C1056030050AEF5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +64,7 @@
 		C916B8E82C104D730050AEF5 /* LottoLog */ = {
 			isa = PBXGroup;
 			children = (
+				C916B9082C105F930050AEF5 /* Model */,
 				C916B8E92C104D730050AEF5 /* AppDelegate.swift */,
 				C916B8EB2C104D730050AEF5 /* SceneDelegate.swift */,
 				C916B8ED2C104D730050AEF5 /* ViewController.swift */,
@@ -63,8 +72,17 @@
 				C916B8F72C104D740050AEF5 /* LaunchScreen.storyboard */,
 				C916B8FA2C104D740050AEF5 /* Info.plist */,
 				C916B8F22C104D730050AEF5 /* LottoLog.xcdatamodeld */,
+				C916B9002C104E3B0050AEF5 /* privateKey.swift */,
 			);
 			path = LottoLog;
+			sourceTree = "<group>";
+		};
+		C916B9082C105F930050AEF5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C916B9092C1060430050AEF5 /* Lotto.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +101,10 @@
 			dependencies = (
 			);
 			name = LottoLog;
+			packageProductDependencies = (
+				C916B9032C1055F60050AEF5 /* Alamofire */,
+				C916B9062C1056030050AEF5 /* SnapKit */,
+			);
 			productName = LottoLog;
 			productReference = C916B8E62C104D730050AEF5 /* LottoLog.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +133,10 @@
 				Base,
 			);
 			mainGroup = C916B8DD2C104D730050AEF5;
+			packageReferences = (
+				C916B9022C1055F60050AEF5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C916B9052C1056030050AEF5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C916B8E72C104D730050AEF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,10 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C916B90A2C1060430050AEF5 /* Lotto.swift in Sources */,
 				C916B8EE2C104D730050AEF5 /* ViewController.swift in Sources */,
 				C916B8F42C104D730050AEF5 /* LottoLog.xcdatamodeld in Sources */,
 				C916B8EA2C104D730050AEF5 /* AppDelegate.swift in Sources */,
 				C916B8EC2C104D730050AEF5 /* SceneDelegate.swift in Sources */,
+				C916B9012C104E3B0050AEF5 /* privateKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +389,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C916B9022C1055F60050AEF5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		C916B9052C1056030050AEF5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C916B9032C1055F60050AEF5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C916B9022C1055F60050AEF5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		C916B9062C1056030050AEF5 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C916B9052C1056030050AEF5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C916B8F22C104D730050AEF5 /* LottoLog.xcdatamodeld */ = {
